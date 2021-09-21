@@ -12,7 +12,7 @@ export class RequestController {
   async createRequest(@Req() req: FastifyRequest, @Res() reply: FastifyReply) {
     const data = await req.file();
     await pump(data.file, fs.createWriteStream(data.filename));
-    // @ts-ignore
+    
     if (data.file.truncated) {
       // you may need to delete the part of the file that has been saved on disk
       // before the `limits.fileSize` has been reached
